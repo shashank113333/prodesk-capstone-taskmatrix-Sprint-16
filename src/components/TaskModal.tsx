@@ -63,8 +63,8 @@ export default function TaskModal({ isOpen, onClose, taskToEdit }: TaskModalProp
       if (data.subtasks && Array.isArray(data.subtasks)) {
         const formattedSubtasks = data.subtasks.map((st: string) => `• ${st}`).join("\n");
         const newDesc = description.trim() 
-          ? `${description.trim()}\n\nSub-steps (AI Generated):\n${formattedSubtasks}`
-          : `Sub-steps (AI Generated):\n${formattedSubtasks}`;
+          ? `${description.trim()}\n\n${formattedSubtasks}`
+          : formattedSubtasks;
 
         setDescription(newDesc);
         setAiNotice("✨ AI sub-steps generated successfully!");
@@ -105,8 +105,8 @@ export default function TaskModal({ isOpen, onClose, taskToEdit }: TaskModalProp
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
-      <div className="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl shadow-2xl p-6 space-y-6 relative animate-in fade-in zoom-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 overflow-y-auto">
+      <div className="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl shadow-2xl p-6 space-y-5 relative animate-in fade-in zoom-in duration-200 my-8">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div className="flex items-center gap-2">
             <div className="p-2 bg-blue-600/10 text-blue-500 rounded-xl">
@@ -160,7 +160,7 @@ export default function TaskModal({ isOpen, onClose, taskToEdit }: TaskModalProp
           </div>
 
           {aiNotice && (
-            <div className="p-2.5 bg-purple-950/40 border border-purple-500/30 text-purple-300 rounded-xl text-xs flex items-center justify-between">
+            <div className="p-2.5 bg-purple-950/40 border border-purple-500/30 text-purple-300 rounded-xl text-xs flex items-center justify-between animate-in fade-in duration-200">
               <span>{aiNotice}</span>
               <button type="button" onClick={() => setAiNotice(null)} className="text-purple-400 hover:text-white">
                 <X className="w-3.5 h-3.5" />
@@ -170,14 +170,14 @@ export default function TaskModal({ isOpen, onClose, taskToEdit }: TaskModalProp
 
           <div>
             <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
-              Description
+              Description / Sub-tasks
             </label>
             <textarea
-              rows={4}
+              rows={6}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Provide context and technical objectives..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Provide context or click 'Auto-generate Sub-tasks' above..."
+              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[150px] leading-relaxed resize-y"
             />
           </div>
 
