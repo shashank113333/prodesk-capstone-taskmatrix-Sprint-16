@@ -1,57 +1,63 @@
-# 🚀 TaskMatrix — Sprint 15: Feature Complete (Full CRUD & Data Analytics)
+# 🚀 TaskMatrix — Sprint 16: The AI Injection & Polish (Commercial SaaS Deliverable)
 
-![Sprint 15 Status](https://img.shields.io/badge/Sprint-15_Feature_Complete-emerald?style=for-the-badge)
+![Sprint 16 Status](https://img.shields.io/badge/Sprint-16_AI_&_Polish-emerald?style=for-the-badge)
 ![Track](https://img.shields.io/badge/Track-A:_Frontend_Specialist-blue?style=for-the-badge)
 ![Next.js 14](https://img.shields.io/badge/Next.js-14_App_Router-black?style=for-the-badge)
-![Analytics](https://img.shields.io/badge/Visualization-Recharts_Engine-purple?style=for-the-badge)
+![Google Gemini AI](https://img.shields.io/badge/AI_Engine-Google_Gemini_1.5_Flash-purple?style=for-the-badge)
 
 ## 📌 Executive Summary
-Sprint 15 delivers the **Feature Complete** CRUD architecture and dynamic data visualization engine for **TaskMatrix** — an enterprise-grade Agile Project Management System. Users can register/login, create tasks, edit task attributes, safely delete tasks, filter tasks by priority/title, and view real-time task analytics.
+Sprint 16 elevates **TaskMatrix** from a student project into a commercial-grade, SaaS-level Agile Task Management System. Under strict **Code Freeze** protocols, client-side UX/UI responsiveness has been perfected for mobile viewports, non-blocking toast notifications integrated, branded empty state fallbacks implemented, and a server-side **Google Gemini AI Microservice** deployed for 1-click automated subtask generation.
 
 ---
 
 ## 🌐 Live Application & Links
-- 🚀 **Live Website (Vercel)**: [https://prodesk-capstone-taskmatrix-sprint-one.vercel.app](https://prodesk-capstone-taskmatrix-sprint-one.vercel.app)
-- 📦 **GitHub Repository**: [https://github.com/shashank113333/prodesk-capstone-taskmatrix-Sprint-15](https://github.com/shashank113333/prodesk-capstone-taskmatrix-Sprint-15)
-- 📝 **AI Compliance Log**: Refer to `Prompts.md` for architectural decision logs.
+- 🚀 **Live Website (Vercel)**: [https://prodesk-capstone-taskmatrix-sprint-inky.vercel.app](https://prodesk-capstone-taskmatrix-sprint-inky.vercel.app)
+- 📦 **GitHub Repository**: [https://github.com/shashank113333/prodesk-capstone-taskmatrix-Sprint-16](https://github.com/shashank113333/prodesk-capstone-taskmatrix-Sprint-16)
+- 📝 **AI Compliance Log**: Refer to [`Prompts.md`](./Prompts.md) for complete LLM system prompts and engineering rationale logs.
 
 ---
 
 ## 🔑 Evaluator & System Administrator Credentials
 
-Below are the pre-seeded credentials for evaluators and reviewers to test all RBAC roles, CRUD operations, and Admin User Accounts Management:
+Below are pre-seeded credentials for evaluators to audit mobile responsiveness, RBAC security guards, and Gemini AI subtask generation:
 
-| Role Name | Agile Designation | Email Address | Default Password | Permissions / Capabilities |
+| Role Name | Agile Designation | Email Address | Default Password | Permissions & Capabilities |
 | :--- | :--- | :--- | :--- | :--- |
-| **System Administrator** | Master System Admin | `shashankv@gmail.com` | `1234` | **Full Admin Control**: All BaaS CRUD, Task Deletions, Recharts Analytics, Accounts DB Directory, Timed Account Suspensions (1h/24h/7d/30d/Perm), Role Editor |
+| **System Administrator** | Master System Admin | `shashankv@gmail.com` | `1234` | Full Admin Control: AI Subtask Generator, BaaS CRUD, Accounts DB Directory, Timed Account Suspensions, Role Editor |
+| **Scrum Lead** | Project Lead / Scrum Master | `scrumlead@prodesk.io` | `1234` | Project Lead Control: AI Subtask Generator, CRUD Operations, Task Deletion with Confirmation Modal |
+| **Developer** | Frontend Specialist | `developer@prodesk.io` | `1234` | Developer Access: AI Subtask Generator, Create/View/Edit tasks (Restricted from Delete & Accounts DB) |
 
+---
 
 ## 🏗️ Technical Architecture & Tech Stack
 
 | Layer | Technology / Tool | Operational Rationale |
 | :--- | :--- | :--- |
-| **Framework** | Next.js 14 (App Router) | Server-driven routing & edge performance |
-| **Language** | TypeScript | Strict typing for Task payloads & store definitions |
-| **Styling** | Tailwind CSS | Modern dark-mode utility-first UI design |
-| **State Management** | Zustand | Global auth & task state management with persistence |
-| **Analytics Engine** | Recharts | Dynamic Bar & Pie charts driven by `.reduce()` aggregated metrics |
-| **Icons** | Lucide React | Enterprise UI iconography |
+| **Framework** | Next.js 14 (App Router) | Server-driven routing, edge API microservices & static optimization |
+| **AI Microservice** | Google Gemini 1.5 Flash API | Server-side LLM call via `/api/ai/generate-subtasks` with strict JSON schema |
+| **Language** | TypeScript | Strict typing for Task entities, stores, and API payloads |
+| **Styling** | Tailwind CSS | Responsive utility-first dark mode design & mobile drawer UI |
+| **State Management** | Zustand | Global auth & task state persistence with localStorage hydration |
+| **Analytics Engine** | Recharts | Dynamic Bar and Distribution charts driven by `.reduce()` metrics |
+| **Icons** | Lucide React | Enterprise UI iconography (`Menu`, `Sparkles`, `Inbox`, `ShieldAlert`) |
 
 ---
 
-## 🔑 Key Features Implemented (Sprint 15 Deliverables)
+## 🔑 Key Features Implemented (Sprint 16 Deliverables)
 
-### 1. Create & Read Operations (Phase 1 - P0)
-- **Data Hydration (Read)**: Automatically fetches and hydrates task state associated with authenticated user email upon `/dashboard` route access.
-- **Payload Injection (Create)**: "+ Add New Task" modal allows injection of new task payloads into cloud state and instantly updates DOM.
+### 📱 1. Viewport Responsiveness (Phase 1 - P0 Mandatory)
+- **Mobile Hamburger Drawer**: Responsive navbar drawer integrated (`Menu` icon toggle) on mobile viewports (`<768px`) ensuring full access to Profile details, Accounts DB, and Logout buttons.
+- **Layout & Overflow Isolation**: Grid container optimization and overflow control across mobile device sizes (e.g. iPhone 14 Pro, 375px–430px).
 
-### 2. Update & Delete Operations (Phase 2 - P1)
-- **State Mutation (Update)**: Edit modal allows modifying Task title, description, status (`To Do`, `In Progress`, `In Review`, `Done`), priority, and due date.
-- **Safety Destruction (Delete)**: Integrated a safety confirmation modal (`DeleteConfirmModal`) before permanently purging task entities from local state.
+### 🤖 2. Client-Side AI Injection (Phase 2 - P1 Priority)
+- **Server-Side AI Endpoint**: Dedicated API Route (`POST /api/ai/generate-subtasks`) executing Google Gemini 1.5 Flash LLM calls securely with environment variable keys.
+- **Auto-Generate Task Sub-steps**: Task Modal features a **`✨ Auto-generate Sub-tasks`** button that parses Task Titles/Descriptions and auto-populates formatted actionable sub-step bullet points.
+- **Prompts Documentation**: All system prompts, regex JSON fallbacks, and security rationales logged in `Prompts.md`.
 
-### 3. Data Analytics & Visualization (Phase 3 - P2)
-- **Data Aggregation**: Custom JavaScript `.reduce()` utility functions parse task objects into column status and priority distribution metrics.
-- **Visualization Engine**: Dynamic Recharts Bar Chart and metric summary panels on dashboard.
+### ✨ 3. Micro-Interactions & Fallback States (Phase 3 - P2 Advanced)
+- **Toast Notifications**: Replaced browser `alert()` popups with non-blocking toast notifications (`Access Control Notice`) for RBAC authorization guards.
+- **Asynchronous Loading UX**: Integrated smooth CSS animated spinners (`Loader2 animate-spin`) during AI payload generation and hydration.
+- **Branded Empty States**: Kanban columns with zero tasks render branded empty state cards with `<Inbox />` icons and helpful action prompts.
 
 ---
 
@@ -59,13 +65,17 @@ Below are the pre-seeded credentials for evaluators and reviewers to test all RB
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/shashank113333/prodesk-capstone-taskmatrix-Sprint-15.git
+git clone https://github.com/shashank113333/prodesk-capstone-taskmatrix-Sprint-16.git
 
 # 2. Navigate to project directory
-cd prodesk-capstone-taskmatrix-Sprint-15
+cd prodesk-capstone-taskmatrix-Sprint-16
 
 # 3. Install dependencies
 npm install
 
-# 4. Launch development server
+# 4. Set up environment variables (.env.local)
+# GEMINI_API_KEY=your_google_gemini_api_key
+
+# 5. Launch development server
 npm run dev
+```
